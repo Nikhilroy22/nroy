@@ -19,7 +19,7 @@
 	  
 		<activity
 			android:name=".SplashActivity"
-		
+			android:theme="@style/Theme.MyApp.Splash"
 			android:windowSoftInputMode="adjustResize"
 			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 			android:hardwareAccelerated="true"

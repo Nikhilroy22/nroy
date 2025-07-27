@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ব্যাকগ্রাউন্ড রঙ -->
+    <item>
+        <color android:color="#2b411a" />
+    </item>
+
+    <!-- সেন্টার করা আইকন -->
+    <item 
+        android:drawable="@drawable/splashicon1"
+        android:width="64dp"
+        android:height="64dp"
+        android:gravity="center" />
+        
+   <!--     <item 
+        android:drawable="@drawable/ppp"
+        android:width="64dp"
+        android:height="64dp"
+        android:bottom="35dp"
+        android:gravity="center|bottom" /> -->
+        
+</layer-list>

@@ -8,5 +8,10 @@
 		<item name="android:colorControlNormal">@color/colorControlNormal</item>
 	</style>
 	
+	<!-- res/values/themes.xml -->
+<style name="Theme.MyApp.Splash" parent="AppTheme">
+    <item name="android:windowBackground">@drawable/splashicon</item>
+   
+</style>	
 	
 </resources>
