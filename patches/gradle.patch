@@ -1,9 +1,0 @@
-diff --git a/gradle.properties b/gradle.properties
-index 918e22e..e69de29 100644
---- a/gradle.properties
-+++ b/gradle.properties
-@@ -1,32 +0,0 @@
-
--android.aapt2FromMavenOverride=/data/data/com.termux/files/usr/bin/aapt2
-
-\ No newline at end of file
