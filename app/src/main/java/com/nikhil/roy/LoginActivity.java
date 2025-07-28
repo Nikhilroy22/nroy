@@ -10,7 +10,7 @@ import android.content.Intent;
 
 public class LoginActivity extends AppCompatActivity {
   
-  Button signupnav;
+  Button signupnav, loginbutton;
   
   
     @Override
@@ -20,14 +20,23 @@ public class LoginActivity extends AppCompatActivity {
         
         //Button
         signupnav = findViewById(R.id.SignupLink);
+        loginbutton = findViewById(R.id.LoginButton);
         //Signup Navigation
         signupnav.setOnClickListener(v -> {
           startActivity(new Intent(this, SignupActivity.class));
             
           
         });
-        
+        //FIREBASE LOGIN Button
+        loginbutton.setOnClickListener(v -> {
+          login();
+          
+        });
         
     }
-    
+    //LOGIN FUNCTION
+    public void login(){
+      
+      Toast.makeText(this, "সাইনআপ ব্যর্থ: " , Toast.LENGTH_LONG).show();
+    }
 }
