@@ -68,7 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                 String error = task.getException().getMessage();
 
                 if (error.contains("The supplied")) {
-                  Toast.makeText(this, "Invalid Email/Password", Toast.LENGTH_LONG).show();
+                  Alert.show(LoginActivity.this, "Details", "Invalid Email/Password");
+                  
                   
                 } else {
                     Toast.makeText(this, "লগইন ব্যর্থ: " + error, Toast.LENGTH_LONG).show();
