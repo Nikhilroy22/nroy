@@ -32,10 +32,10 @@ public class SignupActivity extends AppCompatActivity {
   //Signup Button Click
   signupbutton.setOnClickListener(v -> {
     
-    Toast.makeText(context, "বার্তা লিখুন", Toast.LENGTH_LONG).show();
+    Toast.makeText(this, "বার্তা লিখুন", Toast.LENGTH_LONG).show();
     
     
-  })
+  });
   
   
   
