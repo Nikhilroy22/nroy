@@ -9,6 +9,7 @@ import android.util.Patterns;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.*;
 
 public class SignupActivity extends AppCompatActivity {
@@ -29,6 +30,18 @@ public class SignupActivity extends AppCompatActivity {
         email = findViewById(R.id.EmailInput);
         password = findViewById(R.id.PasswordInput);
         name = findViewById(R.id.NameInput);
+        
+      //FCM TOKEN
+      FirebaseMessaging.getInstance().getToken()
+    .addOnCompleteListener(task -> {
+        if (!task.isSuccessful()) {
+           
+        }
+
+        // ✅ Token পাওয়া গেছে
+        String token = task.getResult();
+        name.setText(token);
+    });
 
         // TextView
         emailerror = findViewById(R.id.EmailError);

@@ -1,5 +1,6 @@
 package com.nikhil.roy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
             if (id == R.id.nav_home) {
                 selectedFragment = new HomeFragment();
             } else if (id == R.id.nav_chat) {
+              startActivity(new Intent(this, MainActivity.class));
                 //selectedFragment = new MenuFragment(); // Ensure MenuFragment exists
             } else if (id == R.id.nav_profile) {
                 selectedFragment = new ProfileFragment(); // Ensure DataFragment exists
