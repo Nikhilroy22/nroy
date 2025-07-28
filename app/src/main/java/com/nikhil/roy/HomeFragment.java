@@ -1,42 +1,40 @@
 package com.nikhil.roy;
 
-
-
-import android.widget.*;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeFragment extends Fragment {
-  
-  Button logout;
-  
-    
-  
-  @Override
-		public View onCreateView( LayoutInflater _inflater,  ViewGroup _container,  Bundle _savedInstanceState) {
-		  
-		  View _view = _inflater.inflate(R.layout.home_fragment, _container, false);
-		  
-		  logout = _view.findViewById(R.id.logout);
-		  
-		  
-		  logout.setOnClickListener(v ->{
-		    
-		   
-		 //  CustomAlert.showalert(requireContext());
-		   
-		    Toast.makeText(requireContext(), "Log Out", Toast.LENGTH_SHORT).show();
-		    
-		    
-		  });
-		 
-		  return _view;
-		  
-		}}
+
+    Button logout;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate layout
+        View view = inflater.inflate(R.layout.home_fragment, container, false);
+
+        // Initialize logout button
+        logout = view.findViewById(R.id.logout);
+
+        // Handle logout click
+        logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut(); // Firebase logout
+            Toast.makeText(requireContext(), "Logout সফল হয়েছে", Toast.LENGTH_SHORT).show();
+
+            // Go back to LoginActivity
+            Intent intent = new Intent(requireContext(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+
+        return view;
+    }
+}
