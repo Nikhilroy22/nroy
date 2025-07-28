@@ -13,6 +13,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
         
+        if (savedInstanceState == null) {
+        getSupportFragmentManager().beginTransaction()
+            .replace(R.id.fragmentContainer, new HomeFragment()) // your default fragment
+            .commit();
+            
+    }
+        
     }
   
 }
