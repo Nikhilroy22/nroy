@@ -109,7 +109,7 @@
     
  
     <Button
-        android:id="@+id/depositBtn"
+        android:id="@+id/SignupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signup"

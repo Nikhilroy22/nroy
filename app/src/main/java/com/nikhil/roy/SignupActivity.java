@@ -18,8 +18,27 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_activity);
-  
+  //EditText
   email = findViewById(R.id.EmailInput);
+  password = findViewById(R.id.PasswordInput);
+  
+  //TextView
+  emailerror = findViewById(R.id.EmailError);
+  passworderror = findViewById(R.id.PasswordError);
+  
+  //Button
+  signupbutton = findViewById(R.id.SignupButton);
+  
+  //Signup Button Click
+  signupbutton.setOnClickListener(v -> {
+    
+    Toast.makeText(context, "বার্তা লিখুন", Toast.LENGTH_LONG).show();
+    
+    
+  })
+  
+  
+  
   
     }
 }
