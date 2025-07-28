@@ -63,7 +63,10 @@ public class LoginActivity extends AppCompatActivity {
     firebaseAuth.signInWithEmailAndPassword(email, password)
         .addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Toast.makeText(this, "লগইন সফল", Toast.LENGTH_SHORT).show();
+               startActivity(new Intent(this, HomeActivity.class));
+                 finish();
+               
+                //Toast.makeText(this, "লগইন সফল", Toast.LENGTH_SHORT).show();
             } else {
                 String error = task.getException().getMessage();
 
@@ -79,13 +82,13 @@ public class LoginActivity extends AppCompatActivity {
 }
 
     // Auto login check
-   /* @Override
+    @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
-    }*/
+    }
 }
