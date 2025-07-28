@@ -1,26 +1,49 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    
+	xmlns:android="http://schemas.android.com/apk/res/android"
+
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     
-    android:gravity="center"
-    >
-
-    <TextView
-        android:id="@+id/dialogTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:textStyle="bold"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/dialogMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Message"
-        android:textColor="#d11717"
-        android:layout_marginTop="8dp" />
+    android:orientation="vertical">
+    
+    <!--
+    <com.google.android.material.tabs.TabLayout
+    android:id="@+id/tabLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:background="#1A2D4F"
+    android:title="Nikhil"
+    />
+    -->
+    
+   <FrameLayout
+		android:id="@+id/fragmentContainer"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		
+		
+		android:layout_weight="1" />
+		
+		
+        	<com.google.android.material.bottomnavigation.BottomNavigationView
+		android:id="@+id/bottomnavigation1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/input_bg"
+		
+		app:itemIconTint="@color/bottom"
+    app:itemTextColor="@color/bottom"
+		
+		app:menu="@menu/bottom_nav_menu"
+		/>
 
     
 </LinearLayout>
+
+
+
