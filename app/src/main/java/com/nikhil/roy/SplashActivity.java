@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
           
-          startActivity(new Intent(this, MainActivity.class));
+          startActivity(new Intent(this, SignupActivity.class));
             finish();
           
           

@@ -33,6 +33,7 @@
 		</activity>
 		<!--Activity -->
 		<activity android:name=".MainActivity"/>
+		<activity android:name=".SignupActivity"/>
 
 	</application>
 </manifest>
