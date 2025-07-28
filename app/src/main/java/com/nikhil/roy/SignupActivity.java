@@ -8,13 +8,16 @@ import android.util.Patterns;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.*;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText email, password;
+    EditText email, password, name;
     TextView emailerror, passworderror;
     Button signupbutton;
-
+   
+    private FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth; // 🔸 FirebaseAuth instance
 
     @Override
@@ -25,6 +28,7 @@ public class SignupActivity extends AppCompatActivity {
         // EditText
         email = findViewById(R.id.EmailInput);
         password = findViewById(R.id.PasswordInput);
+        name = findViewById(R.id.NameInput);
 
         // TextView
         emailerror = findViewById(R.id.EmailError);
@@ -35,11 +39,13 @@ public class SignupActivity extends AppCompatActivity {
 
         // 🔹 Firebase init
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         // Signup Button Click
         signupbutton.setOnClickListener(v -> {
             String Semail = email.getText().toString().trim();
             String Spassword = password.getText().toString().trim();
+            String Sname = name.getText().toString().trim();
 
             boolean haserror = false;
 
@@ -75,18 +81,28 @@ public class SignupActivity extends AppCompatActivity {
 
             // Success
             if (!haserror) {
-                signup(Semail, Spassword);
+                signup(Semail, Spassword, Sname);
             }
         });
     }
 
     // 🔹 Firebase Signup Logic
-    public void signup(String eemail, String password) {
+    public void signup(String eemail, String password, String name) {
         firebaseAuth.createUserWithEmailAndPassword(eemail, password)
             .addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    Toast.makeText(this, "সাইনআপ সফল হয়েছে", Toast.LENGTH_SHORT).show();
-                    // Success - এখান থেকে অন্য Activity তে যেতে পারেন
+                    String uid = firebaseAuth.getCurrentUser().getUid();
+                    
+                    Map<String, Object> userMap = new HashMap<>();
+                    userMap.put("name", name);
+                    userMap.put("email", eemail);
+                    
+                    firestore.collection("Users").document(uid)
+                        .set(userMap)
+                        .addOnSuccessListener(aVoid ->
+                            Toast.makeText(SignupActivity.this, "Signup Successful", Toast.LENGTH_SHORT).show())
+                        .addOnFailureListener(e ->
+                            Toast.makeText(SignupActivity.this, "Firestore Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                 } else {
                     Exception e = task.getException();
 
