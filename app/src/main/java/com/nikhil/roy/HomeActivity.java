@@ -29,10 +29,10 @@ public class HomeActivity extends AppCompatActivity {
 
             if (id == R.id.nav_home) {
                 selectedFragment = new HomeFragment();
-            } else if (id == R.id.nav_menu) {
+            } else if (id == R.id.nav_chat) {
                 //selectedFragment = new MenuFragment(); // Ensure MenuFragment exists
-            } else if (id == R.id.nav_search) {
-               // selectedFragment = new DataFragment(); // Ensure DataFragment exists
+            } else if (id == R.id.nav_profile) {
+                selectedFragment = new ProfileFragment(); // Ensure DataFragment exists
             }
 
             if (selectedFragment != null) {

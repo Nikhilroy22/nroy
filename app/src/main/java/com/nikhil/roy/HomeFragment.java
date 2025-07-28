@@ -14,26 +14,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeFragment extends Fragment {
 
-    Button logout;
+    
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate layout
         View view = inflater.inflate(R.layout.home_fragment, container, false);
 
-        // Initialize logout button
-        logout = view.findViewById(R.id.logout);
-
-        // Handle logout click
-        logout.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut(); // Firebase logout
-            Toast.makeText(requireContext(), "Logout সফল হয়েছে", Toast.LENGTH_SHORT).show();
-
-            // Go back to LoginActivity
-            Intent intent = new Intent(requireContext(), LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        });
+       
 
         return view;
     }
