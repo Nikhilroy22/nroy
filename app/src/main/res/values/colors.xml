@@ -5,4 +5,8 @@
 	<color name="colorControlHighlight">#2196F3</color>
 	<color name="colorControlNormal">#2196F3</color>
 	<color name="windowBackground">#a70a0a</color>
+	
+		<color name="colorSelected">#2b411a</color>
+<color name="colorUnselected">#808080</color>
+	
 </resources>
