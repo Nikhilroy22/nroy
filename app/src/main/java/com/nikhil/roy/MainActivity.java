@@ -15,10 +15,16 @@ import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+  
+  private FirebaseFirestore firestore;
+
 
     ImageView selectedImageView;
     private ActivityResultLauncher<Intent> filePickerLauncher;
@@ -27,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        firestore = FirebaseFirestore.getInstance();
 
         selectedImageView = findViewById(R.id.selectedImage);
         Button pickBtn = findViewById(R.id.pickFileBtn);
@@ -77,7 +85,21 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(String requestId, Map resultData) {
                     String url = resultData.get("secure_url").toString();
-                    Toast.makeText(MainActivity.this, "Uploaded: " + url, Toast.LENGTH_LONG).show();
+                    
+                    //FirebaseFirestore
+                    Map<String, Object> userMap = new HashMap<>();
+                    userMap.put("path", url);
+                    
+                    
+                    firestore.collection("upload")
+                        .add(userMap)
+                        .addOnSuccessListener(aVoid ->
+                            Toast.makeText(MainActivity.this, "Uploaded: " + url, Toast.LENGTH_LONG).show())
+                        .addOnFailureListener(e ->
+                            Toast.makeText(MainActivity.this, "Firestore Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                    
+                    
+                    
                 }
 
                 @Override
