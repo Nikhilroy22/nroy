@@ -11,22 +11,17 @@ import com.nikhil.roy.R;
 
 public class Alert {
 
-    public static void show(Activity activity, String title, String message) {
-        View customView = LayoutInflater.from(activity).inflate(R.layout.alert, null);
-
-        TextView dialogTitle = customView.findViewById(R.id.dialogTitle);
-        TextView dialogMessage = customView.findViewById(R.id.dialogMessage);
-      //  Button dialogButton = customView.findViewById(R.id.dialogButton);
-
-        dialogTitle.setText(title);
-        dialogMessage.setText(message);
-
-        AlertDialog dialog = new AlertDialog.Builder(activity)
-                .setView(customView)
-                .create();
-
-       // dialogButton.setOnClickListener(v -> dialog.dismiss());
-
-        dialog.show();
+    public static void show(Activity activity) {
+       new AlertDialog.Builder(activity)
+        .setTitle("নোটিশ")
+        .setMessage("আপনি কি সত্যিই বের হতে চান?")
+        .setPositiveButton("হ্যাঁ", (dialog, which) -> {
+            // Yes চাপলে যা হবে
+            activity.finish();
+        })
+        .setNegativeButton("না", (dialog, which) -> {
+            dialog.dismiss();
+        })
+        .show();
     }
 }

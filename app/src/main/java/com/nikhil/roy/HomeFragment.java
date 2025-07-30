@@ -33,20 +33,21 @@ public class HomeFragment extends Fragment {
         
         String uid = mAuth.getCurrentUser().getUid();
         //Firestore Show Data
+        Loading.show(requireContext(), "plz....");
         firestore.collection("Users").document(uid).get()
     .addOnSuccessListener(documentSnapshot -> {
         if (documentSnapshot.exists()) {
             String name = documentSnapshot.getString("name");
             setname.setText(name);
             
-
+Loading.hide();
          
         } else {
             
         }
     })
     .addOnFailureListener(e -> {
-        
+       Loading.hide(); 
     });
         
         

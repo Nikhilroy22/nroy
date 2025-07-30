@@ -7,7 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
+
 public class HomeActivity extends AppCompatActivity {
+  
+  private FirebaseAnalytics mFirebaseAnalytics;
+
 
     BottomNavigationView bottomNavigationView;
 
@@ -16,11 +22,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
 
+// Firebase Analytics instance
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        
+        Bundle bundle = new Bundle();
+bundle.putString("clicked_button", "login");
+mFirebaseAnalytics.logEvent("button_click", bundle);
+        
         bottomNavigationView = findViewById(R.id.bottomnavigation1);
         
         
-        SnackbarUtil.showCustomSnackbar(findViewById(android.R.id.content),
-        "আপনার কাজ সফলভাবে সম্পন্ন হয়েছে", R.drawable.ic_success);
+        
 
         // Default fragment
         if (savedInstanceState == null) {

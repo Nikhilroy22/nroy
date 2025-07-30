@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 String error = task.getException().getMessage();
 
                 if (error.contains("The supplied")) {
-                  Alert.show(LoginActivity.this, "Details", "Invalid Email/Password");
+                  Alert.show(LoginActivity.this);
                   
                   
                 } else {

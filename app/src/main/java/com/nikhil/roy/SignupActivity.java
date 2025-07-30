@@ -112,8 +112,11 @@ public class SignupActivity extends AppCompatActivity {
                     
                     firestore.collection("Users").document(uid)
                         .set(userMap)
-                        .addOnSuccessListener(aVoid ->
-                            Toast.makeText(SignupActivity.this, "Signup Successful", Toast.LENGTH_SHORT).show())
+                        .addOnSuccessListener(aVoid ->{
+                          SnackbarUtil.showCustomSnackbar(findViewById(android.R.id.content),
+        "Signup Successfully", R.drawable.ic_success);
+                        }
+                            )
                         .addOnFailureListener(e ->
                             Toast.makeText(SignupActivity.this, "Firestore Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                 } else {
