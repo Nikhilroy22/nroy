@@ -79,7 +79,7 @@
         android:inputType="textPassword"
         
         android:background="@drawable/edittext"
-        android:drawableLeft="@drawable/ic_bdt"/>
+        android:drawableLeft="@drawable/ic_password"/>
         
  <!-- validation -->
       <TextView
