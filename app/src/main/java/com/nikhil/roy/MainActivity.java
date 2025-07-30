@@ -5,7 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
   
   private FirebaseFirestore firestore;
 
+ProgressBar progressBar;
 
     ImageView selectedImageView;
     private ActivityResultLauncher<Intent> filePickerLauncher;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         firestore = FirebaseFirestore.getInstance();
+        
+        progressBar = findViewById(R.id.progressBar);
 
         selectedImageView = findViewById(R.id.selectedImage);
         Button pickBtn = findViewById(R.id.pickFileBtn);
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void pickFile() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
+        intent.setType("*/*");
         filePickerLauncher.launch(intent);
     }
 
@@ -80,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onProgress(String requestId, long bytes, long totalBytes) {}
+                public void onProgress(String requestId, long bytes, long totalBytes) {
+                  int progress = (int) ((bytes * 100) / totalBytes);
+                        progressBar.setProgress(progress);
+                }
 
                 @Override
                 public void onSuccess(String requestId, Map resultData) {

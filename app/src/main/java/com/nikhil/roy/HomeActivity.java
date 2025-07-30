@@ -17,6 +17,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.home_activity);
 
         bottomNavigationView = findViewById(R.id.bottomnavigation1);
+        
+        
+        SnackbarUtil.showCustomSnackbar(findViewById(android.R.id.content),
+        "আপনার কাজ সফলভাবে সম্পন্ন হয়েছে", R.drawable.ic_success);
 
         // Default fragment
         if (savedInstanceState == null) {
