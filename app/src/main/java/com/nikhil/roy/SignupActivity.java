@@ -94,6 +94,7 @@ public class SignupActivity extends AppCompatActivity {
 
             // Success
             if (!haserror) {
+              Loading.show(this, "wait....");
                 signup(Semail, Spassword, Sname);
             }
         });
@@ -115,10 +116,12 @@ public class SignupActivity extends AppCompatActivity {
                         .addOnSuccessListener(aVoid ->{
                           SnackbarUtil.showCustomSnackbar(findViewById(android.R.id.content),
         "Signup Successfully", R.drawable.ic_success);
+        Loading.hide(); 
                         }
                             )
-                        .addOnFailureListener(e ->
-                            Toast.makeText(SignupActivity.this, "Firestore Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                        .addOnFailureListener(e ->{
+                        Loading.hide(); 
+                            Toast.makeText(SignupActivity.this, "Firestore Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();});
                 } else {
                     Exception e = task.getException();
 
@@ -126,7 +129,9 @@ public class SignupActivity extends AppCompatActivity {
                         email.requestFocus();
                         emailerror.setText("এই ইমেইলটি ইতিমধ্যে ব্যবহার হয়েছে");
                         emailerror.setVisibility(View.VISIBLE);
+                        Loading.hide(); 
                     } else {
+                      Loading.hide(); 
                         Toast.makeText(this, "সাইনআপ ব্যর্থ: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }

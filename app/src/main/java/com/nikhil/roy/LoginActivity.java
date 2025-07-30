@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 password.requestFocus();
                 return;
             }
+            Loading.show(this, "wait....");
 
             // Login function call
             login(Semail, Spassword);
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         .addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                startActivity(new Intent(this, HomeActivity.class));
+               Loading.hide(); 
                  finish();
                
                 //Toast.makeText(this, "লগইন সফল", Toast.LENGTH_SHORT).show();
@@ -72,9 +74,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (error.contains("The supplied")) {
                   Alert.show(LoginActivity.this);
+                  Loading.hide(); 
                   
                   
                 } else {
+                  Loading.hide(); 
                     Toast.makeText(this, "লগইন ব্যর্থ: " + error, Toast.LENGTH_LONG).show();
                 }
             }
