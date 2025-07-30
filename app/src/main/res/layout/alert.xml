@@ -1,26 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/bg_alert"
-    android:gravity="center"
-    >
+    android:padding="24dp"
+    android:background="@drawable/bg_dialog">
 
     <TextView
-        android:id="@+id/dialogTitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="Connect to a network"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textColor="#000000" />
 
     <TextView
-        android:id="@+id/dialogMessage"
-        android:layout_width="wrap_content"
+        android:id="@+id/dialog_message"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Message"
-        android:textColor="#d11717"
-        android:layout_marginTop="8dp" />
+        android:text="To use Facebook Lite, turn on mobile data or connect to Wi-Fi."
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:textColor="#777777" />
 
-    
+    <Button
+        android:id="@+id/dialog_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:textColor="#1877F2"
+        android:background="@drawable/button_border" />
 </LinearLayout>

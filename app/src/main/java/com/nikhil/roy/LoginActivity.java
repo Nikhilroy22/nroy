@@ -77,7 +77,7 @@ overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 String error = task.getException().getMessage();
 
                 if (error.contains("The supplied")) {
-                  Alert.show(LoginActivity.this);
+                  //Alert.show(LoginActivity.this);
                   Loading.hide(); 
                   
                   
