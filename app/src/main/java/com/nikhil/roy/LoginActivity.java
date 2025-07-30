@@ -67,7 +67,9 @@ overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         .addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                startActivity(new Intent(this, HomeActivity.class));
-               Loading.hide(); 
+               // Apply animation
+overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+               //Loading.hide(); 
                  finish();
                
                 //Toast.makeText(this, "লগইন সফল", Toast.LENGTH_SHORT).show();
