@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         // Signup Navigation
         signupnav.setOnClickListener(v -> {
             startActivity(new Intent(this, SignupActivity.class));
+            // Apply animation
+overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
         // Login Button

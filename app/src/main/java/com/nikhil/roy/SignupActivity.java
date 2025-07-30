@@ -6,6 +6,9 @@ import android.widget.*;
 import android.view.View;
 import android.util.Patterns;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -53,6 +56,14 @@ public class SignupActivity extends AppCompatActivity {
         // 🔹 Firebase init
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        // Back pressed dispatcher for new way
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+    @Override
+    public void handleOnBackPressed() {
+        finish(); // Activity বন্ধ
+        overridePendingTransition(R.anim.bslide_in_left, R.anim.bslide_out_right); // অ্যানিমেশন
+    }
+});
 
         // Signup Button Click
         signupbutton.setOnClickListener(v -> {
