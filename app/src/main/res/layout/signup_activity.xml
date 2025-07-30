@@ -65,7 +65,7 @@
         android:hint="Enter your Name"
         android:inputType="textEmailAddress"
         
-        android:background="@drawable/edittext"
+        android:background="@drawable/bg_edittext"
         android:drawableLeft="@drawable/ic_profile"/>
      
    <TextView
@@ -83,7 +83,7 @@
         android:hint="Enter your email"
         android:inputType="textEmailAddress"
         
-        android:background="@drawable/edittext"
+        android:background="@drawable/bg_edittext"
         android:drawableLeft="@drawable/ic_phone"/>
         <!-- validation -->
   <TextView
@@ -110,8 +110,8 @@
         android:hint="Enter your password"
         android:inputType="textPassword"
         
-        android:background="@drawable/edittext"
-        android:drawableLeft="@drawable/ic_bdt"/>
+        android:background="@drawable/bg_edittext"
+        android:drawableLeft="@drawable/ic_password"/>
         
  <!-- validation -->
       <TextView
