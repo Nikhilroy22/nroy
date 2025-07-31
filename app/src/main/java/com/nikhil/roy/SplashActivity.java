@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 
 // Start animation
 loader.playAnimation();
-Alert.show(this, "kala");
+//Alert.show(this, "kala");
 // Stop animation
 //loader.cancelAnimation();
 //loader.setVisibility(View.GONE);
