@@ -1,70 +1,60 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_top_navbar"
+    android:padding="8dp">
 
-    <!-- Top Bar Layout -->
-    <LinearLayout
-        android:id="@+id/layout1"
-        android:layout_width="match_parent"
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_profile"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- User Name -->
+    <TextView
+        android:id="@+id/setname"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/bg_top_navbar"
-        android:paddingBottom="4dp">
+        android:text="..."
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/profileImage"
+        app:layout_constraintEnd_toStartOf="@id/notificationIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <!-- Notification Icon -->
+    <ImageView
+        android:id="@+id/notificationIcon"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:src="@drawable/ic_notifications_white"
+        android:tint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-            <!-- Profile Image -->
-            <ImageView
-                android:id="@+id/profileImage"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_profile"
-                android:scaleType="centerCrop" />
+    <!-- Notification Count Badge -->
+    <TextView
+        android:id="@+id/notificationCount"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:text="5"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:background="@drawable/bg_circle"
+        app:layout_constraintTop_toTopOf="@id/notificationIcon"
+        app:layout_constraintEnd_toEndOf="@id/notificationIcon"
+        android:padding="2dp" />
 
-            <!-- User Name -->
-            <TextView
-                android:id="@+id/setname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/profileImage"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="12dp"
-                android:text="..."
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <!-- Notification Icon -->
-            <ImageView
-                android:id="@+id/notificationIcon"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_notifications_white"
-                android:tint="#FFFFFF" />
-
-            <!-- Notification Count Badge -->
-            <TextView
-                android:id="@+id/notificationCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/notificationIcon"
-                android:layout_alignEnd="@id/notificationIcon"
-                android:background="@drawable/bg_circle"
-                android:text="5"
-                android:textColor="@android:color/white"
-                android:textSize="10sp"
-                android:padding="2dp"
-                android:minWidth="16dp"
-                android:gravity="center" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

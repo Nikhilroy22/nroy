@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="24dp"
     android:background="@drawable/bg_dialog">
 
     <TextView
-        android:id="@+id/dialog_title"
+        android:id="@+id/dialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connect to a network"
-        android:textSize="18sp"
+        android:text="Notice"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:gravity="center"
+        android:paddingBottom="12dp" />
 
     <TextView
-        android:id="@+id/dialog_message"
+        android:id="@+id/dialogMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="To use Facebook Lite, turn on mobile data or connect to Wi-Fi."
-        android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:textColor="#777777" />
+        android:text="আপনার  what is your name my name is Nikhil roy kivkro tumi ami janai janana ktha chilo vlo basha chilo keno tumi chole gele"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:gravity="center" />
 
     <Button
-        android:id="@+id/dialog_ok"
+        android:id="@+id/okButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:textColor="#1877F2"
-        android:background="@drawable/button_border" />
+        android:text="Ok"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FFFFFF" />
 </LinearLayout>

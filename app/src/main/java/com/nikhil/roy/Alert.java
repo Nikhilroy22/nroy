@@ -16,8 +16,10 @@ public class Alert {
      public static void show(Context context, String message) {
         customDialog = new Dialog(context);
         View view = LayoutInflater.from(context).inflate(R.layout.alert, null);
-       // TextView loadingText = view.findViewById(R.id.loading_text);
-      //  loadingText.setText(message);
+        Button okbutton = view.findViewById(R.id.okButton);
+      okbutton.setOnClickListener(v -> {
+        hide();
+      });
 
         customDialog.setContentView(view);
         customDialog.setCancelable(false);
