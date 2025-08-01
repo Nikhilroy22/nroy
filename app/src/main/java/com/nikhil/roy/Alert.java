@@ -17,6 +17,9 @@ public class Alert {
         customDialog = new Dialog(context);
         View view = LayoutInflater.from(context).inflate(R.layout.alert, null);
         Button okbutton = view.findViewById(R.id.okButton);
+        TextView des = view.findViewById(R.id.dialogMessage);
+        
+        des.setText(message);
       okbutton.setOnClickListener(v -> {
         hide();
       });

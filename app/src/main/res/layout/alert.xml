@@ -21,7 +21,7 @@
         android:id="@+id/dialogMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="আপনার  what is your name my name is Nikhil roy kivkro tumi ami janai janana ktha chilo vlo basha chilo keno tumi chole gele"
+        android:text="Alert"
         android:textSize="16sp"
         android:textColor="#333333"
         android:gravity="center" />

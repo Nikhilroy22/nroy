@@ -34,18 +34,18 @@ public class SplashActivity extends AppCompatActivity {
 
 // Start animation
 loader.playAnimation();
-Alert.show(this, "kala");
+
 // Stop animation
 //loader.cancelAnimation();
 //loader.setVisibility(View.GONE);
-        
+    
 
     new Thread(() -> {
-      boolean isWorking = Network.isInternetWorking();
-        if (!isWorking) {
+      
+        if (!NetworkUtils.isMobileDataWithInternet(this)) {
             // MB নাই, PING fail
             new Handler(Looper.getMainLooper()).post(() ->
-                    Toast.makeText(this, "মোবাইল ডেটা শেষ হয়েছে ❌", Toast.LENGTH_LONG).show());
+                    Alert.show(this, "Check internet conntion"));
         } else {
             // MB আছে, সব ঠিক
             new Handler(Looper.getMainLooper()).post(() -> {
