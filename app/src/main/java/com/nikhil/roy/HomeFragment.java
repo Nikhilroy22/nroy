@@ -11,6 +11,10 @@ import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.*;
+
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +24,9 @@ public class HomeFragment extends Fragment {
 
     FirebaseAuth mAuth;
     GridView gridView;
+    RecyclerView recyclerView;
+    List<String> itemList;
+
     
     String[] itemNames = {"Deposit", "Profile"};
     int[] itemIcons = {
@@ -42,7 +49,19 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
         TextView setname = view.findViewById(R.id.setname);
         gridView = view.findViewById(R.id.gridView);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        // Sample Data
+        itemList = new ArrayList<>();
+        for (int i = 1; i <= 20; i++) {
+            itemList.add("Bangla Song " + i);
+        }
+
+        // Set LayoutManager and Adapter
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        MyAdapter Radapter = new MyAdapter(itemList);
+        recyclerView.setAdapter(Radapter);
         
+        //GridView
         GridAdapter adapter = new GridAdapter(requireContext(), itemNames, itemIcons);
         gridView.setAdapter(adapter);
         

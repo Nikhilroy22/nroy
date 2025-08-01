@@ -59,16 +59,41 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             app:layout_constraintTop_toTopOf="@id/notificationIcon"
             app:layout_constraintEnd_toEndOf="@id/notificationIcon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <!-- GridView -->
-    <GridView
-        android:id="@+id/gridView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="4"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="8dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"
-        android:padding="8dp" />
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- GridView with fixed height -->
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="4"
+            android:verticalSpacing="8dp"
+            android:horizontalSpacing="8dp"
+            android:layout_marginBottom="16dp"
+            android:stretchMode="columnWidth"
+            android:isScrollContainer="false"
+            android:nestedScrollingEnabled="false"
+            android:focusable="false" />
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:focusable="false" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
 </LinearLayout>
