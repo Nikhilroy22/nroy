@@ -24,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(android.R.id.text1); // Simple layout textView
+            textView = itemView.findViewById(R.id.itemName); // Simple layout textView
         }
     }
 
@@ -32,7 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                                  .inflate(android.R.layout.simple_list_item_1, parent, false);
+                                  .inflate(R.layout.r_list, parent, false);
         return new ViewHolder(view);
     }
 
