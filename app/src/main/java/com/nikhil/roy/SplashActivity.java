@@ -48,7 +48,9 @@ loader.playAnimation();
             // MB নাই, PING fail
             new Handler(Looper.getMainLooper()).post(() ->{
             loader.setVisibility(View.GONE);
-                    Alert.show(this, "Check internet conntion");});
+                    Alert.show(this, "Check internet conntion", () ->{
+                      finish();
+                    });});
         } else {
             // MB আছে, সব ঠিক
             new Handler(Looper.getMainLooper()).post(() -> {

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.*;
 import android.content.Intent;
 import android.util.Patterns;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -89,7 +91,10 @@ overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         }).addOnFailureListener(e -> {
         Loading.hide();
-        Alert.show(this, e.getMessage());
+        Alert.show(this, e.getMessage(), () ->{
+          
+          
+        });
     });
 }
 

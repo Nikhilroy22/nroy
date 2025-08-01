@@ -79,7 +79,9 @@ public class HomeFragment extends Fragment {
                     Loading.hide();
                 })
                 .addOnFailureListener(e -> {
-                    Alert.show(requireContext(), "Error: " + e.getMessage());
+                    Alert.show(requireContext(), "Error: " + e.getMessage(), () -> {
+                      
+                    });
                     Loading.hide();
                 });
         }

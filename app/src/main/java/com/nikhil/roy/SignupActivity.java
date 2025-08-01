@@ -20,6 +20,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText email, password, name;
     TextView emailerror, passworderror;
     Button signupbutton;
+    ImageView backbtn;
    
     private FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth; // 🔸 FirebaseAuth instance
@@ -33,6 +34,8 @@ public class SignupActivity extends AppCompatActivity {
         email = findViewById(R.id.EmailInput);
         password = findViewById(R.id.PasswordInput);
         name = findViewById(R.id.NameInput);
+        //ImageView
+        backbtn = findViewById(R.id.back);
         
       //FCM TOKEN
       FirebaseMessaging.getInstance().getToken()
@@ -64,6 +67,11 @@ public class SignupActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.bslide_in_left, R.anim.bslide_out_right); // অ্যানিমেশন
     }
 });
+//BackButton
+backbtn.setOnClickListener(v ->{
+  getOnBackPressedDispatcher().onBackPressed();
+});
+
 
         // Signup Button Click
         signupbutton.setOnClickListener(v -> {

@@ -8,12 +8,16 @@ import android.view.LayoutInflater;
 
 
 public class Alert {
-    
+  
+    public interface BtnConfirm {
+        void oonConfirm();
+        
+    }
     
     public static Dialog customDialog;
     
     
-     public static void show(Context context, String message) {
+     public static void show(Context context, String message, BtnConfirm confirmbtn) {
         customDialog = new Dialog(context);
         View view = LayoutInflater.from(context).inflate(R.layout.alert, null);
         Button okbutton = view.findViewById(R.id.okButton);
@@ -22,6 +26,7 @@ public class Alert {
         des.setText(message);
       okbutton.setOnClickListener(v -> {
         hide();
+        if (confirmbtn != null) {confirmbtn.oonConfirm();}
       });
 
         customDialog.setContentView(view);
