@@ -89,15 +89,15 @@ public class HomeFragment extends Fragment {
             String clickedItem = itemNames[position];
             Toast.makeText(requireContext(), "Clicked: " + clickedItem, Toast.LENGTH_SHORT).show();
 
-         /*   switch (clickedItem) {
+            switch (clickedItem) {
                 case "Deposit":
-                    startActivity(new Intent(requireContext(), DepositActivity.class));
+                    startActivity(new Intent(requireContext(), SignupActivity.class));
                     break;
-                case "Profile":
+              /* case "Profile":
                     startActivity(new Intent(requireContext(), ProfileActivity.class));
-                    break;
+                    break; */
                 // Add more cases if you add more items
-            } */
+            } 
         });
 
         return view;

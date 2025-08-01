@@ -21,8 +21,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
         
-        SnackbarUtil.showCustomSnackbar(findViewById(android.R.id.content),
-        "Signup Successfully", R.drawable.ic_success);
+        /*SnackbarUtil.showCustomSnackbar(findViewById(android.R.id.content),
+        "Signup Successfully", R.drawable.ic_success);*/
        
         
       /*  new Handler(Looper.getMainLooper()).postDelayed(() -> {
@@ -57,6 +57,10 @@ startActivity(new Intent(this, LoginActivity.class));
             });
         }
     }).start();
+    
+    
+    
+    
 }
         
    }

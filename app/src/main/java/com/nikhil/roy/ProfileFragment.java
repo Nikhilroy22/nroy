@@ -26,14 +26,26 @@ public class ProfileFragment extends Fragment {
 
         // Handle logout click
         logout.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut(); // Firebase logout
-            Toast.makeText(requireContext(), "Logout সফল হয়েছে", Toast.LENGTH_SHORT).show();
-
+            ConfirmAlert.showConfirm(requireContext(), "আপনি কি অ্যাপটি বন্ধ করতে চান?", new ConfirmAlert.ConfirmCallback() {
+    @Override
+    public void onConfirm() {
+        // হ্যাঁ চাপলে যা হবে
+        FirebaseAuth.getInstance().signOut(); 
             // Go back to LoginActivity
             Intent intent = new Intent(requireContext(), LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+    }
+
+    @Override
+    public void onCancel() {
+        // না চাপলে যা হবে (বা কিছুই না)
+    }
         });
+});
+    
+            
+            
 
         return view;
     }
