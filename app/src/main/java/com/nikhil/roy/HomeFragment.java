@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.*;
 import android.widget.Toast;
 
+import android.widget.AdapterView;
+import android.widget.GridView;
+
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,6 +19,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class HomeFragment extends Fragment {
 
     FirebaseAuth mAuth;
+    GridView gridView;
+    
+    String[] itemNames = {"Deposit", "Profile"};
+    int[] itemIcons = {
+        R.drawable.ic_profile,
+        R.drawable.ic_profile,
+        
+    };
+
     
     private FirebaseFirestore firestore;
 
@@ -29,7 +41,10 @@ public class HomeFragment extends Fragment {
         // Inflate layout
         View view = inflater.inflate(R.layout.home_fragment, container, false);
         TextView setname = view.findViewById(R.id.setname);
+        gridView = view.findViewById(R.id.gridView);
         
+        GridAdapter adapter = new GridAdapter(requireContext(), itemNames, itemIcons);
+        gridView.setAdapter(adapter);
         
         String uid = mAuth.getCurrentUser().getUid();
         //Firestore Show Data
@@ -47,10 +62,30 @@ Loading.hide();
         }
     })
     .addOnFailureListener(e -> {
+      Alert.show(requireContext(), e.getMessage());
        Loading.hide(); 
     });
         
-        
+     gridView.setOnItemClickListener((parent, vieww, position, id) -> {
+    String clickedItem = itemNames[position];
+
+    Toast.makeText(requireContext(), "Clicked: " + clickedItem, Toast.LENGTH_SHORT).show();
+
+  /*  switch (clickedItem) {
+        case "Deposit":
+            startActivity(new Intent(MainActivity.this, DepositActivity.class));
+            break;
+        case "Withdraw":
+            startActivity(new Intent(MainActivity.this, WithdrawActivity.class));
+            break;
+        case "History":
+            startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+            break;
+        case "Profile":
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            break; 
+    } */
+});   
 
        
 

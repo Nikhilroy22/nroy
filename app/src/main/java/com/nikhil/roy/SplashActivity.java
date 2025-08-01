@@ -1,6 +1,7 @@
 package com.nikhil.roy;
 
 import android.widget.*;
+import android.view.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,7 +21,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
         
-        
+        SnackbarUtil.showCustomSnackbar(findViewById(android.R.id.content),
+        "Signup Successfully", R.drawable.ic_success);
        
         
       /*  new Handler(Looper.getMainLooper()).postDelayed(() -> {
@@ -44,8 +46,9 @@ loader.playAnimation();
       
         if (!NetworkUtils.isMobileDataWithInternet(this)) {
             // MB নাই, PING fail
-            new Handler(Looper.getMainLooper()).post(() ->
-                    Alert.show(this, "Check internet conntion"));
+            new Handler(Looper.getMainLooper()).post(() ->{
+            loader.setVisibility(View.GONE);
+                    Alert.show(this, "Check internet conntion");});
         } else {
             // MB আছে, সব ঠিক
             new Handler(Looper.getMainLooper()).post(() -> {

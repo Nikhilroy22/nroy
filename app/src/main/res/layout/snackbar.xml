@@ -3,35 +3,49 @@
     android:id="@+id/custom_snackbar_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:orientation="horizontal"
     android:background="@drawable/snackbar_bg"
-    android:gravity="center_vertical">
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:elevation="6dp"
+    android:layout_margin="12dp"
+    android:minHeight="56dp">
 
+    <!-- Status Icon -->
     <ImageView
         android:id="@+id/snackbar_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_success" />
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_success"
+        android:contentDescription="Status Icon" />
 
+    <!-- Message Text -->
     <TextView
         android:id="@+id/snackbar_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textIsSelectable="true"
-        android:layout_marginStart="12dp"
-        android:text="Custom Snackbar"
+        android:text="অ্যাকশন সফল হয়েছে!"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="14sp"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:textIsSelectable="true" />
 
+    <!-- Cancel / Close Icon -->
     <ImageView
         android:id="@+id/snackbar_cancel"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:padding="4dp"
         android:src="@drawable/ic_cancel"
-        android:contentDescription="Cancel"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Dismiss"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        android:layout_marginStart="12dp"/>
 </LinearLayout>

@@ -75,6 +75,7 @@ overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //Toast.makeText(this, "লগইন সফল", Toast.LENGTH_SHORT).show();
             } else {
                 String error = task.getException().getMessage();
+                
 
                 if (error.contains("The supplied")) {
                   //Alert.show(LoginActivity.this);
@@ -86,7 +87,10 @@ overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     Toast.makeText(this, "লগইন ব্যর্থ: " + error, Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        }).addOnFailureListener(e -> {
+        Loading.hide();
+        Alert.show(this, e.getMessage());
+    });
 }
 
     // Auto login check

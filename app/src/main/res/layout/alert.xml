@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Alert"
+        android:textIsSelectable="true"
         android:textSize="16sp"
         android:textColor="#333333"
         android:gravity="center" />
