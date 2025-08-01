@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
     // GridView data
     private final String[] itemNames = {"Deposit", "Profile"};
     private final int[] itemIcons = {
-        R.drawable.ic_deposit,   // Change to correct icon if needed
+        R.drawable.ic_profile,   // Change to correct icon if needed
         R.drawable.ic_profile
     };
 
