@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.TextView;
+import android.widget.*;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
 
     private GridView gridView;
     private RecyclerView recyclerView;
-    private TextView setname;
+    private TextView setname, notification;
 
     private List<String> itemList;
 
@@ -53,6 +53,7 @@ public class HomeFragment extends Fragment {
 
         // Initialize views
         setname = view.findViewById(R.id.setname);
+        notification = view.findViewById(R.id.notificationCount);
         gridView = view.findViewById(R.id.gridView);
         recyclerView = view.findViewById(R.id.recyclerView);
 
@@ -79,11 +80,21 @@ public class HomeFragment extends Fragment {
 
 viewModel.getUserNameLiveData().observe(getViewLifecycleOwner(), name -> {
     setname.setText(name != null ? name : "User");  // রিয়েলটাইমে UI আপডেট
-    isFirstLoad = false; // ✅ পরবর্তীতে আর dialog দেখাবে না
+    if (isFirstLoad) {
+     //   Loading.hide(); // 👈 এটাও দরকার
+        isFirstLoad = false;
+    }
 });
 
 viewModel.startListening(uid);
-          
+          viewModel.getUpayCountLiveData().observe(getViewLifecycleOwner(), count -> {
+            if (count != null && count > 0) {
+    notification.setVisibility(View.VISIBLE);
+    notification.setText(String.valueOf(count));
+} else {
+    notification.setVisibility(View.GONE); // লুকিয়ে ফেলো যদি null বা 0 হয়
+}
+          });
           
           
          /*   Loading.show(requireContext(), "Please wait...");
