@@ -34,12 +34,13 @@
 		android:id="@+id/bottomnavigation1"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		app:menu="@menu/bottom_nav_menu"
 		android:background="@drawable/input_bg"
-		
+		app:labelVisibilityMode="labeled"
 		app:itemIconTint="@color/bottom"
     app:itemTextColor="@color/bottom"
 		
-		app:menu="@menu/bottom_nav_menu"
 		/>
 
     

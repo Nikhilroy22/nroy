@@ -12,14 +12,18 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.badge.BadgeDrawable;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
+  
+  static boolean isFirstLoad = true; // ✅ প্রথমবার ট্র্যাক কর
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
@@ -69,7 +73,20 @@ public class HomeFragment extends Fragment {
         // Fetch name from Firestore
         String uid = mAuth.getCurrentUser() != null ? mAuth.getCurrentUser().getUid() : null;
         if (uid != null) {
-            Loading.show(requireContext(), "Please wait...");
+          if(isFirstLoad){
+          Loading.show(requireContext(), "Please wait...");}
+          FirestoreViewModel viewModel = new ViewModelProvider(requireActivity()).get(FirestoreViewModel.class);
+
+viewModel.getUserNameLiveData().observe(getViewLifecycleOwner(), name -> {
+    setname.setText(name != null ? name : "User");  // রিয়েলটাইমে UI আপডেট
+    isFirstLoad = false; // ✅ পরবর্তীতে আর dialog দেখাবে না
+});
+
+viewModel.startListening(uid);
+          
+          
+          
+         /*   Loading.show(requireContext(), "Please wait...");
             firestore.collection("Users").document(uid).get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
@@ -83,7 +100,7 @@ public class HomeFragment extends Fragment {
                       
                     });
                     Loading.hide();
-                });
+                }); */
         }
 
         // Grid item click

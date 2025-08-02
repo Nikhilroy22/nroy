@@ -41,7 +41,7 @@ loader.playAnimation();
 //loader.cancelAnimation();
 //loader.setVisibility(View.GONE);
     
-
+/*
     new Thread(() -> {
       
         if (!NetworkUtils.isMobileDataWithInternet(this)) {
@@ -58,10 +58,10 @@ startActivity(new Intent(this, LoginActivity.class));
             finish();
             });
         }
-    }).start();
+    }).start(); */
     
-    
-    
+    startActivity(new Intent(this, LoginActivity.class));
+    finish();
     
 }
         
